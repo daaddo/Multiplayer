@@ -35,6 +35,8 @@ Prima di iniziare, assicurati di avere installato sul tuo sistema:
 ## Esecuzione del Gioco
 
 ### Avvio del Server
+1. Modificare server.ip all interno di client/target/settings.properties  e server/target/settings.properties
+mettendo il vostro ip redis
 
 2. Avvia il server del gioco:
     ```sh
