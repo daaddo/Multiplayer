@@ -165,7 +165,13 @@ public class ServerGameManager implements RedisMessageListener, TurretListener {
     private void publish(String channel, String message){
         if (alive) {
             LoggerG.setMessage("Publishing message: " + message + " to channel: " + channel).system();
-            RedisManager.getInstance().publish(channel, message);
+            try {
+                RedisManager.getInstance().publish(channel, message);
+            } catch (Exception e) {
+                System.out.println("Publishing message: " + message + " to channel: " + channel);
+                e.printStackTrace();
+            }
+
         }
     }
     //refresh the server status

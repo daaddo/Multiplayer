@@ -24,6 +24,8 @@ public class MainGui extends javax.swing.JFrame implements ClientListener {
         this.setBounds(0, 0, 800, 800);
         ClientGameManager.getInstance().setLocalBoard(initBoard());
         this.setLocationRelativeTo(null);
+        this.jLabelPlayer1_Health.setText("Player 1: "+ClientGameManager.getInstance().getSelfPlayer().getHP());
+        this.jLabelPlayer2_Health.setText("Player 2: "+ClientGameManager.getInstance().getEnemyPlayer().getHP());
     }
     public SingleCellPanel[][] initBoard() {
         SingleCellPanel[][] board = new SingleCellPanel[Settings.getInstance().getHeight()][Settings.getInstance().getWitdh()];
@@ -101,10 +103,13 @@ public class MainGui extends javax.swing.JFrame implements ClientListener {
 
     @Override
     public void healthChanged(PlayerType playerType) {
+
         if (playerType == PlayerType.SELF) {
+            this.jLabelPlayer1_Health.setText("Player 1: "+ClientGameManager.getInstance().getSelfPlayer().getHP());
             jpanel_healtBarPlayer1.setHP(ClientGameManager.getInstance().getSelfPlayer().getHP());
         }
         if (playerType == PlayerType.ENEMY) {
+            this.jLabelPlayer2_Health.setText("Player 2: "+ClientGameManager.getInstance().getEnemyPlayer().getHP());
             jpanel_healtBarPlayer2.setHP(ClientGameManager.getInstance().getEnemyPlayer().getHP());
         }
     }
